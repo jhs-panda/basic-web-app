@@ -13,10 +13,15 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-  if (query.toLowerCase().includes("name")) {
-    return (
-      "Joy Song"
-    );
+  if (query.toLowerCase().includes("largest")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers) {
+      const parsedNumbers = numbers.map(Number); // Extract and parse numbers
+      const largestNumber = Math.max(...parsedNumbers); // Find the largest number
+      return largestNumber.toString(); // Return the largest number as a string
+    } else {
+      return "No numbers found in the query.";
+    }
   }
 
   if (query.toLowerCase().includes("44")) {
