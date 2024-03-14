@@ -16,19 +16,32 @@ export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("largest")) {
     const numbers = query.match(/\d+/g);
     if (numbers) {
-      const parsedNumbers = numbers.map(Number); // Extract and parse numbers
-      const largestNumber = Math.max(...parsedNumbers); // Find the largest number
-      return largestNumber.toString(); // Return the largest number as a string
+      const parsedNumbers = numbers.map(Number); 
+      const largestNumber = Math.max(...parsedNumbers); 
+      return largestNumber.toString();
     } else {
-      return "No numbers found in the query.";
+      return "Bad input.";
     }
   }else if(query.toLowerCase().includes("plus")) {
     const numbers = query.match(/\d+/g);
     if (numbers && numbers.length >= 2) {
-      const result = numbers.map(Number).reduce((a, b) => a + b, 0); // Perform addition
-      return result.toString(); // Return the result of addition as a string
+      const result = numbers.map(Number).reduce((a, b) => a + b, 0); 
+      return result.toString(); 
     } else {
-      return "Insufficient numbers for addition.";
+      return "Bad input.";
+    }
+  }else if(query.toLowerCase().includes("square")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers) {
+      const parsedNumbers = numbers.map(Number);
+      const candidates = parsedNumbers.filter(num => {
+        const squareRoot = Math.sqrt(num);
+        const cubeRoot = Math.cbrt(num);
+        return squareRoot % 1 === 0 && cubeRoot % 1 === 0; // Check if both square and cube roots are integers
+      });
+      return parsedNumbers.toString();
+    } else {
+      return "Bad input.";
     }
   }
 
