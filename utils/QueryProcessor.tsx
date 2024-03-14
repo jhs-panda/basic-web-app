@@ -39,7 +39,7 @@ export default function QueryProcessor(query: string): string {
         const cubeRoot = Math.cbrt(num);
         return squareRoot % 1 === 0 && cubeRoot % 1 === 0; // Check if both square and cube roots are integers
       });
-      return parsedNumbers.toString();
+      return candidates.toString();
     } else {
       return "Bad input.";
     }
