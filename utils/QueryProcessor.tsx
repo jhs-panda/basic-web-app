@@ -59,6 +59,14 @@ export default function QueryProcessor(query: string): string {
     } else {
       return "Bad input.";
     }
+  }else if(query.toLowerCase().includes("power")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length >= 2) {
+      const result = numbers.map(Number).reduce((a, b) => Math.pow(a, b), 0); 
+      return result.toString(); 
+    } else {
+      return "Bad input.";
+    }
   }
 
   if (query.toLowerCase().includes("44")) {
