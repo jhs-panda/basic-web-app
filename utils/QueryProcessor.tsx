@@ -51,6 +51,14 @@ export default function QueryProcessor(query: string): string {
     } else {
       return "Bad input.";
     }
+  }else if(query.toLowerCase().includes("minus")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length >= 2) {
+      const result = numbers.map(Number).reduce((a, b) => a - b, 0); 
+      return result.toString(); 
+    } else {
+      return "Bad input.";
+    }
   }
 
   if (query.toLowerCase().includes("44")) {
