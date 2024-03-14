@@ -22,6 +22,14 @@ export default function QueryProcessor(query: string): string {
     } else {
       return "No numbers found in the query.";
     }
+  }else if(query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/\d+/g);
+    if (numbers && numbers.length >= 2) {
+      const result = numbers.map(Number).reduce((a, b) => a + b, 0); // Perform addition
+      return result.toString(); // Return the result of addition as a string
+    } else {
+      return "Insufficient numbers for addition.";
+    }
   }
 
   if (query.toLowerCase().includes("44")) {
