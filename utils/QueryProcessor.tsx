@@ -46,7 +46,7 @@ export default function QueryProcessor(query: string): string {
   }else if(query.toLowerCase().includes("multiplied")) {
     const numbers = query.match(/\d+/g);
     if (numbers && numbers.length >= 2) {
-      const result = numbers.map(Number).reduce((a, b) => a * b, 1); 
+      const result = numbers.map(Number).reduce((a, b) => a * b); 
       return result.toString(); 
     } else {
       return "Bad input.";
@@ -54,17 +54,19 @@ export default function QueryProcessor(query: string): string {
   }else if(query.toLowerCase().includes("minus")) {
     const numbers = query.match(/\d+/g);
     if (numbers && numbers.length >= 2) {
-      const result = numbers.map(Number).reduce((a, b) => a - b, 0); 
+      const result = numbers.map(Number).reduce((a, b) => a - b); 
       return result.toString(); 
     } else {
       return "Bad input.";
     }
   }else if(query.toLowerCase().includes("power")) {
     const numbers = query.match(/\d+/g);
-    if (numbers && numbers.length >= 2) {
-      const result = numbers.map(Number).reduce((a, b) => Math.pow(a, b), 0); 
+    if (numbers && numbers.length == 2) {
+      const result = numbers.map(Number).reduce((a, b) => Math.pow(a, b)); 
+      console.log(result);
       return result.toString(); 
     } else {
+      console.log("HELLOO");
       return "Bad input.";
     }
   }
